@@ -3,7 +3,7 @@ import ItemList from '../ItemList/ItemList'
 
 const Layout = () => {
     return (
-        <div>
+        <div >
             <ItemList />
         </div>
     )

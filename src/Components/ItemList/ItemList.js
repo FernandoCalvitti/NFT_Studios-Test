@@ -17,17 +17,19 @@ const ItemList = () => {
 
     //Renders a component for every Item
     return (
-        <div className="ItemList">
-            {items.map(item => {
-                return (
-                    <Item 
-                        id={item.id}
-                        image={item.image_preview_url}
-                        key={item.id}
-                        name={item.name}
-                    />
-                )
-            })}
+        <div className="container">
+            <div className="ItemList row">
+                {items.map(item => {
+                    return (
+                        <Item 
+                            id={item.id}
+                            image={item.image_preview_url}
+                            key={item.id}
+                            name={item.name}
+                        />
+                    )
+                })}
+            </div>
         </div>
     )
 }
