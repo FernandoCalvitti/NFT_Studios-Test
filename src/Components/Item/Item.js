@@ -1,9 +1,12 @@
 import React from 'react'
 
-const Item = () => {
+// Item receives props from ItemList Component
+const Item = ( { id, image, name } ) => {
     return (
-        <div>
-            Un item
+        <div className="Item">
+            <img alt={name} src={image}/>
+            <small>{name}</small>
+            <small>{id}</small>
         </div>
     )
 }
