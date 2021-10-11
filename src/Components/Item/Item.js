@@ -10,6 +10,7 @@ const Item = ( { id, image, name } ) => {
                 </div>
                 <div className="card-body">
                     <small>{name}</small>
+                    <br />
                     <small>{id}</small>
 
                 </div>
