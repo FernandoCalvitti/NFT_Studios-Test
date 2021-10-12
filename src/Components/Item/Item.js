@@ -4,15 +4,12 @@ import React from 'react'
 const Item = ( { id, image, name } ) => {
     return (
         <div className="Item col-3">
-            <div className="card m-4">
-                <div className="card-img-top">
-                    <img alt={name} src={image}/>
+            <div className="card m-4 p-4">
+                <div className="container">
+                    <img className="img-fluid" alt={name} src={image}/>
                 </div>
                 <div className="card-body">
-                    <small>{name}</small>
-                    <br />
-                    <small>{id}</small>
-
+                    <strong className="text">{name}</strong>
                 </div>
             </div>
         </div>

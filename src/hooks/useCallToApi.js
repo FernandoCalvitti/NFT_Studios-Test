@@ -33,7 +33,7 @@ const useCallToApi = () => {
         })
     }, [])
 
-    return { isLoading, loadMore, items}
+    return { blocks, isLoading, loadMore, items}
 }
 
 export default useCallToApi

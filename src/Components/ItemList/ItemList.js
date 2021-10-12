@@ -8,7 +8,7 @@ import useCallToApi from '../../hooks/useCallToApi'
 const ItemList = () => {
 
     //Call to hook
-    const { isLoading, loadMore, items } = useCallToApi()
+    const { blocks, isLoading, loadMore, items } = useCallToApi()
 
     window.onscroll = function () {
         //Check if page has scrolled to bottom
@@ -23,10 +23,9 @@ const ItemList = () => {
     //Renders a component for every Item
     return (
             <div>
-                { isLoading ?
-                    <Spinner /> :
-                    <div >
-                        <div className="ItemList row">
+                { ( isLoading && blocks === 20) ? <Spinner /> :
+                    <div className="container">
+                        <div className="ItemList container-fluid row">
                             {items.map(item => {
                                 return (
                                     <Item 
@@ -39,7 +38,9 @@ const ItemList = () => {
                             })}                            
                         </div>
                     </div>
-                }                            
+                }{
+                 <Spinner />
+                }                         
             </div>
     )
 }
