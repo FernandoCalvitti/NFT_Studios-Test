@@ -8,7 +8,7 @@ import useCallToApi from '../../hooks/useCallToApi'
 const ItemList = () => {
 
     //Call to hook
-    const { blocks, isLoading, loadMore, items } = useCallToApi()
+    const { blocks, isLoading, loadingMoreItems, loadMore, items } = useCallToApi()
 
     window.onscroll = function () {
         //Check if page has scrolled to bottom
@@ -39,7 +39,7 @@ const ItemList = () => {
                         </div>
                     </div>
                 }{
-                 <Spinner />
+                    loadingMoreItems && <Spinner />
                 }                         
             </div>
     )
