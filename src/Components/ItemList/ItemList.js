@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import Item from '../Item/Item'
 import Spinner from '../Spinner/Spinner'
 import useCallToApi from '../../hooks/useCallToApi'
@@ -10,9 +10,18 @@ const ItemList = () => {
     //Call to hook
     const { isLoading, loadMore, items } = useCallToApi()
 
+    window.onscroll = function () {
+        //Check if page has scrolled to bottom
+        if (
+            window.innerHeight + document.documentElement.scrollTop ===
+            document.documentElement.offsetHeight
+        ) {
+            loadMore()
+        }
+    }
+
     //Renders a component for every Item
     return (
-        <div>
             <div>
                 { isLoading ?
                     <Spinner /> :
@@ -30,13 +39,8 @@ const ItemList = () => {
                             })}                            
                         </div>
                     </div>
-                }
-                                
+                }                            
             </div>
-            <div className="btn btn-primary m-4" onClick={loadMore}>
-                Mas imagenes
-            </div>
-        </div>
     )
 }
 
