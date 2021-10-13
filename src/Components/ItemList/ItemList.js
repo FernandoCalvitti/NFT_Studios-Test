@@ -16,14 +16,13 @@ const ItemList = () => {
             window.innerHeight + document.documentElement.scrollTop ===
             document.documentElement.offsetHeight
         ) {
-            //Time out to await and see spinner effect
-            setTimeout(loadMore(),2500)            
+            loadMore()
         }
     }
 
     //Renders a component for every Item
     return (
-            <div>
+            <div className="container m-4">
                 { ( isLoading && blocks === 20) ? <Spinner /> :
                     <div className="container">
                         <div className="ItemList container-fluid row">

@@ -20,12 +20,18 @@ const useCallToApi = () => {
     //Add more img to the list
     const loadMore = async (block) => {
         setLoadingMoreItems(true)
-        block = blocks
-        const res = await fetchApi(block)
-            .then(setBlocks(blocks + 20))
-            const moreItems = res.assets
-        setItems([...items, ...moreItems])
-        setLoadingMoreItems(false)
+
+        //Timeout to see spinner
+        setTimeout(async() => {
+
+            block = blocks
+            const res = await fetchApi(block)
+                .then(setBlocks(blocks + 20))
+                const moreItems = res.assets
+            setItems([...items, ...moreItems])
+            setLoadingMoreItems(false)
+
+        }, 3000)
     }
 
     //Fetch on the first render 
