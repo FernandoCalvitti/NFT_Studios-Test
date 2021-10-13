@@ -3,7 +3,7 @@ import React from 'react'
 // Item receives props from ItemList Component
 const Item = ( { image, name } ) => {
     return (
-        <div className="Item col-md-3">
+        <div className="Item col-md-3"  data-testid="item-alone">
             <div className="m-4 p-4">
                 <div className="container">
                     <img className="img-fluid" alt={name} src={image}/>
