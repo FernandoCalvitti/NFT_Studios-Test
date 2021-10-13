@@ -16,7 +16,8 @@ const ItemList = () => {
             window.innerHeight + document.documentElement.scrollTop ===
             document.documentElement.offsetHeight
         ) {
-            loadMore()
+            //Time out to await and see spinner effect
+            setTimeout(loadMore(),2500)            
         }
     }
 
