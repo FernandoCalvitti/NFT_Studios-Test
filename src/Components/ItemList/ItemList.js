@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import Item from '../Item/Item'
 import Spinner from '../Spinner/Spinner'
 import useCallToApi from '../../hooks/useCallToApi'
@@ -8,16 +8,24 @@ import useCallToApi from '../../hooks/useCallToApi'
 const ItemList = () => {
 
     //Call to hook
-    const { isLoading, loadMore, items } = useCallToApi()
+    const { blocks, isLoading, loadingMoreItems, loadMore, items } = useCallToApi()
+
+    window.onscroll = function () {
+        //Check if page has scrolled to bottom
+        if (
+            window.innerHeight + document.documentElement.scrollTop ===
+            document.documentElement.offsetHeight
+        ) {
+            loadMore()
+        }
+    }
 
     //Renders a component for every Item
     return (
-        <div>
-            <div>
-                { isLoading ?
-                    <Spinner /> :
-                    <div >
-                        <div className="ItemList row">
+            <div className="container m-4">
+                { ( isLoading && blocks === 20) ? <Spinner /> :
+                    <div className="container">
+                        <div className="ItemList container-fluid row">
                             {items.map(item => {
                                 return (
                                     <Item 
@@ -30,13 +38,10 @@ const ItemList = () => {
                             })}                            
                         </div>
                     </div>
-                }
-                                
+                }{
+                    loadingMoreItems && <Spinner />
+                }                         
             </div>
-            <div className="btn btn-primary m-4" onClick={loadMore}>
-                Mas imagenes
-            </div>
-        </div>
     )
 }
 

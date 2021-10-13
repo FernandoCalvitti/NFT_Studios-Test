@@ -12,16 +12,26 @@ const useCallToApi = () => {
 
     //State for new blocks of images
     const [blocks, setBlocks] = useState(20)
+
+    //State to check if page is fetching again
+    const [loadingMoreItems, setLoadingMoreItems] = useState(false)
+
     
     //Add more img to the list
     const loadMore = async (block) => {
-        setIsLoading(true)
-        block = blocks
-        const res = await fetchApi(block)
-            .then(setBlocks(blocks + 20))
-            const moreItems = res.assets
-        setItems([...items, ...moreItems])
-        setIsLoading(false)
+        setLoadingMoreItems(true)
+
+        //Timeout to see spinner
+        setTimeout(async() => {
+
+            block = blocks
+            const res = await fetchApi(block)
+                .then(setBlocks(blocks + 20))
+                const moreItems = res.assets
+            setItems([...items, ...moreItems])
+            setLoadingMoreItems(false)
+
+        }, 3000)
     }
 
     //Fetch on the first render 
@@ -33,7 +43,9 @@ const useCallToApi = () => {
         })
     }, [])
 
-    return { isLoading, loadMore, items}
+
+
+    return { blocks, isLoading, loadingMoreItems, loadMore, items}
 }
 
 export default useCallToApi
