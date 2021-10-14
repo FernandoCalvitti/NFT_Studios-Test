@@ -26,6 +26,7 @@ Object {
         >
           <div
             class="container position-relative top-100 start-50 translate-middle"
+            data-testid="spinner"
           >
             <div
               class="spinner-grow p-4 text-primary"
@@ -72,6 +73,7 @@ Object {
       >
         <div
           class="container position-relative top-100 start-50 translate-middle"
+          data-testid="spinner"
         >
           <div
             class="spinner-grow p-4 text-primary"
